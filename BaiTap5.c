@@ -1,36 +1,60 @@
 #include <stdio.h>
- 
-int main() {
-   int arr[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-   int even[10], odd[10];
-   int i, e, d;
-    
-   e = d = 0;
-    
-   for(i = 0; i < 10; i++) {
+#include <stdlib.h>
+void NhapMang(int arr[],int n){
+   int *p = &arr[0];
+    for (int i = 0; i < n; i++)
+    {
+        printf("Nhap a[%d] = ", i);
+        scanf("%d", (p + i));
+    }
+}
+
+void XuatMang(int arr[], int n){
+   int *p = &arr[0];
+   for (int i = 0; i < n; i++)
+    {
+        printf("\nGia tri a[%d] = %d", i, *(p + i));
+    }
+}
+
+void TachMangChan(int arr[], int n, int Even[],int *e, int Odd[], int *d){
+
+   for(int i = 0; i < n; i++) {
       if(arr[i] % 2 == 0) {
-         even[e] = arr[i];
-         e++;
+         Even[*e] = arr[i];
+         *e++;
       }else {
-         odd[d] = arr[i];
-         d++;
+         Odd[*d] = arr[i];
+         *d++;
       }
    }
-   printf("Chia mot mang thanh hai mang trong C:\n\n");   
-   printf("Mang ban dau la -> ");
-   for(i = 0; i < 10; i++) {
-      printf(" %d", arr[i]);
-   }
+}
+
+int main() {
+
+   int n;
+   
+   do
+   {
+      printf("Nhap so luong phan tu mang: ");
+      scanf("%d",&n);
+   } while (n<1);
+   int *arr = (int *)malloc(n * sizeof(int *));
+   NhapMang(arr,n);
+
+   printf("Xuat mang da nhap:\n ");   
+   XuatMang(arr,n);
+   int Even[n], Odd[n];
+   int e = 0;
+   int d = 0;
+   printf("\nMang da tach ->",TachMang(arr, n, Even, &d, Odd, &e));
+   
+   printf("Mang chan -> \n");
+   XuatMang(Even, &e);
         
-   printf("\nMang chan -> ");
-   for(i = 0; i < e; i++) {
-      printf(" %d", even[i]);   
-   }
-    
    printf("\nMang le -> ");
-   for(i = 0; i < d; i++) {
-      printf(" %d", odd[i]);   
-   }
+   XuatMang(Odd, &d);
     
+   free(arr);
    return 0;
 }

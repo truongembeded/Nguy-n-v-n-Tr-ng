@@ -9,47 +9,44 @@ int Kiemtra(char *p) {
    return count;
 }
 int main() {
-   char s1[] = "hoc vdk, hoc lap trinh online, hoc c, hoc c++, hoc java, ...";
-   char s2[] = "hoc";
+   char Dad[] = "hoc vdk, hoc lap trinh online, hoc c, hoc c++, hoc java, ...";
+   char Son[] = "hoc";
  
    int n = 0;
    int m = 0;
    int times = 0;
-   // bien luu giu do dai cua chuoi can tim kiem
-   int len = Kiemtra(s2);
+   int leghth = Kiemtra(Son);
  
-   while(s1[n] != '\0') {
+   while(Dad[n] != '\0') {
  
-      if(s1[n] == s2[m]) {    // neu ky tu dau tien la giong nhau
+      if(Dad[n] == Son[m]) {   
  
-         // tiep tuc tim kiem
-         while(s1[n] == s2[m]  && s1[n] !='\0') {
+        
+         while(Dad[n] == Son[m]  && Dad[n] !='\0') {
             n++;
             m++;
          }
  
-         // Neu day ky tu nay co do dai bang chuoi tim kiem
-         if(m == len && (s1[n] == ' ' || s1[n] == '\0')) {
+         if(m == leghth && (Dad[n] == ' ' || Dad[n] == '\0')) {
  
-            // Chuc mung ban da tim ra chuoi can tim
             times++;
          }
-      } else {   // Neu ky tu dau tien khong giong nhau
-         while(s1[n] != ' ') {    //bo qua, tiep tuc tim kiem tu tiep theo
+      } else {
+         while(Dad[n] != ' ') {    
             n++;
-            if(s1[n] == '\0')
+            if(Dad[n] == '\0') 
             break;
          }
       }
          
       n++;
-      m=0;  // reset bien dem.
+      m=0;
    }
  
    if(times > 0) {
-      printf("Chuoi '%s' xuat hien %d lan\n", s2, times);
+      printf("Chuoi '%s' xuat hien %d lan\n", Son, times);
    }else {
-      printf("Chuoi '%s' khong xuat hien trong cau.\n", s2);
+      printf("Chuoi '%s' khong xuat hien trong cau.\n", Son);
    }
  
    return 0;
