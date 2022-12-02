@@ -1,0 +1,1 @@
+printf("%d \n", root_node->value);

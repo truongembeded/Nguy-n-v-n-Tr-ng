@@ -1,0 +1,1 @@
+ avg = TB(mang, 6);
